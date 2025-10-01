@@ -3,122 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statur Moving</title>
+    <title>Statur Moving - Effortless Moves in Los Angeles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
             color: #333;
+            line-height: 1.6;
         }
         header {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #007bff, #00c6ff);
             color: white;
-            padding: 20px;
+            padding: 60px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         .header-left {
+            z-index: 1;
             text-align: left;
+            max-width: 50%;
         }
         .header-left h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
             margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .header-left p {
-            margin: 5px 0 0;
+            font-size: 1.2em;
+            margin: 10px 0 0;
         }
         .header-right img {
-            width: 150px;
-            height: 150px;
+            z-index: 1;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .header-right img:hover {
+            transform: scale(1.05);
+        }
+        nav {
+            background-color: #0056b3;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffd700;
         }
         section {
-            padding: 40px 20px;
+            padding: 60px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            color: #007bff;
+        }
         #about {
             background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 40px;
+            text-align: center;
         }
         #services {
-            background-color: #e9ecef;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            background: linear-gradient(to bottom, #e9ecef, #ffffff);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         .service {
-            width: 30%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
-            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         .service img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
+            border-bottom: 5px solid #007bff;
+        }
+        .service h3 {
+            font-size: 1.5em;
+            margin: 15px 0 10px;
+        }
+        .service i {
+            font-size: 3em;
+            color: #007bff;
             margin-bottom: 10px;
         }
         #shop {
-            background-color: white;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            background: linear-gradient(to bottom, #ffffff, #e9ecef);
+        }
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
         .product {
-            width: 30%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
-            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         .product img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            margin-bottom: 10px;
+            border-bottom: 5px solid #00c6ff;
+        }
+        .product h3 {
+            font-size: 1.3em;
+            margin: 15px 0 5px;
+        }
+        .product p {
+            font-weight: bold;
+            color: #28a745;
         }
         #reviews {
-            background-color: #e9ecef;
+            background-color: #f8f9fa;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         .review {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .review::before {
+            content: '\f10d';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 2em;
+            color: #007bff;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 10px;
+        }
+        .review p {
+            font-style: italic;
+        }
+        .review cite {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
         }
         #contact {
-            background-color: white;
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         form {
             display: flex;
             flex-direction: column;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 20px;
         }
         form input, form textarea {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            padding: 12px;
+            border: none;
             border-radius: 5px;
+            font-size: 1em;
         }
         form button {
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
+            padding: 12px;
+            background-color: #ffd700;
+            color: #007bff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        form button:hover {
+            background-color: #ffc107;
+        }
+        .contact-info {
+            text-align: center;
+            font-size: 1.1em;
+        }
+        .contact-info i {
+            margin-right: 10px;
         }
         footer {
-            background-color: #007bff;
+            background-color: #0056b3;
             color: white;
             padding: 20px;
             text-align: center;
+            margin-top: 40px;
         }
         footer a {
-            color: white;
-            margin: 0 10px;
+            color: #ffd700;
+            margin: 0 15px;
             text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: white;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-left {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+            .header-right img {
+                width: 150px;
+                height: 150px;
+            }
         }
     </style>
 </head>
@@ -127,100 +286,117 @@
     <header>
         <div class="header-left">
             <h1>Statur Moving</h1>
-            <p>Making Your Move Effortless and Stress-Free</p>
+            <p>Your Trusted Partner for Seamless Relocations in Los Angeles</p>
         </div>
         <div class="header-right">
-            <img src="https://via.placeholder.com/150?text=Company+Photo" alt="Statur Moving Photo">
+            <img src="https://via.placeholder.com/200?text=Statur+Moving+Logo" alt="Statur Moving Photo">
         </div>
     </header>
 
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#shop">Shop</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
     <section id="about">
-        <h2>About Our Company</h2>
-        <p>At Statur Moving, we specialize in providing seamless moving services in Los Angeles. We make moving very easy and quick, ensuring a hassle-free experience for all our clients. With over 2 years in the business, we have proudly served more than 400 clients with full satisfaction.</p>
+        <h2>About Statur Moving</h2>
+        <p>At Statur Moving, we transform the daunting task of moving into a breeze. Specializing in easy and quick relocations across Los Angeles, we've been delivering exceptional service for over 2 years. With more than 400 satisfied clients, our team ensures every move is handled with care, efficiency, and a touch of magic.</p>
     </section>
 
     <section id="services">
-        <h2>Our Moving Services</h2>
-        <div class="service">
-            <img src="https://via.placeholder.com/300x200?text=Moving+In/Out" alt="Moving In and Out">
-            <h3>Moving In and Out</h3>
-            <p>We help you move from your current place to a new one with efficiency and care.</p>
-        </div>
-        <div class="service">
-            <img src="https://via.placeholder.com/300x200?text=Storage+Moving" alt="Storage Moving">
-            <h3>Storage to House or Vice Versa</h3>
-            <p>We bring your stuff from storage to your house or from your house to storage safely.</p>
-        </div>
-        <div class="service">
-            <img src="https://via.placeholder.com/300x200?text=Internal+Moving" alt="Internal Moving">
-            <h3>Internal House Moving</h3>
-            <p>We assist in moving your stuff inside your house, rearranging as needed.</p>
+        <h2>Our Premium Moving Services</h2>
+        <div class="services-grid">
+            <div class="service">
+                <img src="https://via.placeholder.com/300x250?text=Moving+In/Out" alt="Moving In and Out">
+                <i class="fas fa-truck-moving"></i>
+                <h3>Moving In and Out</h3>
+                <p>We expertly handle your transition from one place to another, making sure everything arrives safely and on time.</p>
+            </div>
+            <div class="service">
+                <img src="https://via.placeholder.com/300x250?text=Storage+Moving" alt="Storage Moving">
+                <i class="fas fa-warehouse"></i>
+                <h3>Storage to House or Vice Versa</h3>
+                <p>Whether retrieving from storage or storing away, we transport your belongings with utmost security and speed.</p>
+            </div>
+            <div class="service">
+                <img src="https://via.placeholder.com/300x250?text=Internal+Moving" alt="Internal Moving">
+                <i class="fas fa-home"></i>
+                <h3>Internal House Moving</h3>
+                <p>Need to rearrange within your home? We help move furniture and items inside your space effortlessly.</p>
+            </div>
         </div>
     </section>
 
     <section id="shop">
-        <h2>Our Shop</h2>
-        <div class="product">
-            <img src="https://via.placeholder.com/300x200?text=Tapes" alt="Tapes">
-            <h3>Tapes</h3>
-            <p>$3 - $10</p>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/300x200?text=Stretch+Wrap" alt="Stretch Wrap">
-            <h3>Stretch Wrap</h3>
-            <p>$10</p>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/300x200?text=Hand+Trucks" alt="Hand Trucks">
-            <h3>Hand Trucks</h3>
-            <p>$20 - $40</p>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/300x200?text=Small+Box" alt="Small Box">
-            <h3>Small Boxes</h3>
-            <p>$4</p>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/300x200?text=Medium+Box" alt="Medium Box">
-            <h3>Medium Boxes</h3>
-            <p>$6</p>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/300x200?text=Large+Box" alt="Large Box">
-            <h3>Large Boxes</h3>
-            <p>$8</p>
+        <h2>Shop Moving Essentials</h2>
+        <div class="shop-grid">
+            <div class="product">
+                <img src="https://via.placeholder.com/250x200?text=Tapes" alt="Tapes">
+                <h3>Tapes</h3>
+                <p>$3 - $10</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/250x200?text=Stretch+Wrap" alt="Stretch Wrap">
+                <h3>Stretch Wrap</h3>
+                <p>$10</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/250x200?text=Hand+Trucks" alt="Hand Trucks">
+                <h3>Hand Trucks</h3>
+                <p>$20 - $40</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/250x200?text=Small+Box" alt="Small Box">
+                <h3>Small Boxes</h3>
+                <p>$4</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/250x200?text=Medium+Box" alt="Medium Box">
+                <h3>Medium Boxes</h3>
+                <p>$6</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/250x200?text=Large+Box" alt="Large Box">
+                <h3>Large Boxes</h3>
+                <p>$8</p>
+            </div>
         </div>
     </section>
 
     <section id="reviews">
-        <h2>Customer Reviews</h2>
-        <div class="review">
-            <p>"Statur Moving made our relocation so smooth! Highly recommend them for any move."</p>
-            <p>- John D.</p>
-        </div>
-        <div class="review">
-            <p>"Quick, professional, and affordable. We've used them twice and will again!"</p>
-            <p>- Sarah M.</p>
-        </div>
-        <div class="review">
-            <p>"Excellent service from start to finish. They handled everything with care."</p>
-            <p>- Mike R.</p>
+        <h2>What Our Clients Say</h2>
+        <div class="reviews-grid">
+            <div class="review">
+                <p>"Statur Moving turned our chaotic move into a smooth adventure! Their team was professional, punctual, and incredibly helpful. We highly recommend them!"</p>
+                <cite>- John D., Los Angeles</cite>
+            </div>
+            <div class="review">
+                <p>"From packing to unloading, everything was handled with care. We've moved twice with Statur and wouldn't choose anyone else. Five stars!"</p>
+                <cite>- Sarah M., Hollywood</cite>
+            </div>
+            <div class="review">
+                <p>"Exceptional service at a great price. They made our internal rearrangement feel like a fresh start. Truly the best in LA!"</p>
+                <cite>- Mike R., Downtown LA</cite>
+            </div>
         </div>
     </section>
 
     <section id="contact">
-        <h2>Contact Us</h2>
+        <h2>Get in Touch</h2>
         <form>
             <input type="text" placeholder="Your Name" required>
             <input type="email" placeholder="Your Email" required>
             <input type="tel" placeholder="Your Phone Number" required>
-            <textarea placeholder="Your Questions" rows="5" required></textarea>
+            <textarea placeholder="Your Questions or Message" rows="5" required></textarea>
             <button type="submit">Send Message</button>
         </form>
-        <p style="text-align: center; margin-top: 20px;">
-            300 North Beaudry Ave Apt 7062, Los Angeles, CA 90012<br>
-            +1-818-853-4904
-        </p>
+        <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i>300 North Beaudry Ave Apt 7062, Los Angeles, CA 90012</p>
+            <p><i class="fas fa-phone-alt"></i>+1-818-853-4904</p>
+        </div>
     </section>
 
     <footer>
